@@ -1,4 +1,6 @@
 export type AnswerProps = {
-    children: string
-    //isCorrect: boolean
+    prefix: string
+    label: string
+    isCorrect : boolean
+    // handleMouseover : () => void
 }

@@ -1,3 +1,4 @@
 export type ButtonProps = {
-    children : string
+    label : string
+    color : string
 }
