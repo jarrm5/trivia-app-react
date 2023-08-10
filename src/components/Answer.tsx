@@ -1,8 +1,8 @@
 import { AnswerProps } from "../props/Answer.types";
 
-export const Answer = ({ prefix, label, isCorrect }: AnswerProps) => {
+export const Answer = ({ prefix, label, isCorrect, onSelect }: AnswerProps) => {
   return (
-    <h5>
+    <h5 onClick={onSelect}>
       {prefix}. {label}
     </h5>
   );

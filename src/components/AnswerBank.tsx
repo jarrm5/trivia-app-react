@@ -1,26 +1,23 @@
 import { useState } from "react";
 import { AnswerProps } from "../props/Answer.types";
 import { Answer } from "./Answer";
+import { AnswerBankProps } from "../props/AnswerBank.types";
 
-const answers = [
-  { answer: "Berlin", isCorrect: false },
-  { answer: "Munich", isCorrect: false },
-  { answer: "Frankfurt", isCorrect: false },
-  { answer: "Nuremberg", isCorrect: true },
-];
-
-export const AnswerBank = () => {
-  const [isAnswerMouseover, setIsAnswerMouseover] = useState(false);
+export const AnswerBank = ({ answers }: AnswerBankProps) => {
+  const [selectedIndex, setSelectedIndex] = useState(-1);
 
   return (
     <ul className="list-group">
       {answers.map((answer, index) => (
-        <li className="list-group-item" key={index}>
+        <li className={selectedIndex === index ? "list-group-item active" : "list-group-item"} key={index}>
           <Answer
-            // handleMouseover={setIsAnswerMouseover(!isAnswerMouseover)}
+            // handleMouseover={setactiveIndex(!activeIndex)}
             isCorrect={answer.isCorrect}
             prefix={String.fromCharCode(index + 65)}
             label={answer.answer}
+            onSelect={() => {
+              setSelectedIndex(index);
+            }}
           ></Answer>
         </li>
       ))}

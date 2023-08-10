@@ -6,11 +6,19 @@ import { Question } from "./components/Question";
 import { AnswerBank } from "./components/AnswerBank";
 
 function App() {
+  const answers = [
+    { answer: "Berlin", isCorrect: false },
+    { answer: "Munich", isCorrect: false },
+    { answer: "Frankfurt", isCorrect: false },
+    { answer: "Nuremberg", isCorrect: true },
+  ];
+
   return (
     <div className="App">
       <Question>In 1945, which German city hosted the trials where former Nazi leaders were prosecuted for war crimes?</Question>
-      <AnswerBank></AnswerBank>
-      <Button color={"dark"} label="Submit"></Button>
+      <AnswerBank answers={answers}></AnswerBank>
+      <Button color={"dark"} label="Previous"></Button>
+      <Button color={"dark"} label="Next"></Button>
     </div>
   );
 }
