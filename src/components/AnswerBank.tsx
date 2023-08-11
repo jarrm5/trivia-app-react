@@ -11,7 +11,6 @@ export const AnswerBank = ({ answers }: AnswerBankProps) => {
       {answers.map((answer, index) => (
         <li className={selectedIndex === index ? "list-group-item active" : "list-group-item"} key={index}>
           <Answer
-            // handleMouseover={setactiveIndex(!activeIndex)}
             isCorrect={answer.isCorrect}
             prefix={String.fromCharCode(index + 65)}
             label={answer.answer}

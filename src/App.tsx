@@ -17,8 +17,10 @@ function App() {
     <div className="App">
       <Question>In 1945, which German city hosted the trials where former Nazi leaders were prosecuted for war crimes?</Question>
       <AnswerBank answers={answers}></AnswerBank>
-      <Button color={"dark"} label="Previous"></Button>
-      <Button color={"dark"} label="Next"></Button>
+      <div className="btn-group btn-group-lg">
+        <Button color={"dark"} label="Previous"></Button>
+        <Button color={"dark"} label="Next"></Button>
+      </div>
     </div>
   );
 }
