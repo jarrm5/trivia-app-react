@@ -3,42 +3,29 @@ import { AnswerProps } from "../props/Answer.types";
 import { Answer } from "./Answer";
 import { AnswerBankProps } from "../props/AnswerBank.types";
 import { Grid } from "@mui/material";
+import { List } from "@mui/material";
 
 export const AnswerBank = ({ answers }: AnswerBankProps) => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
 
   return (
-    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }}>
       {answers.map((answer, index) => (
         <Grid xs={6}>
-          <Answer
-            isCorrect={answer.isCorrect}
-            prefix={String.fromCharCode(index + 65)}
-            label={answer.answer}
-            onSelect={() => {
-              setSelectedIndex(index);
-            }}
-          ></Answer>
+          <List>
+            <Answer
+              key={index}
+              isCorrect={answer.isCorrect}
+              prefix={String.fromCharCode(index + 65)}
+              label={answer.answer}
+              isSelected={selectedIndex === index}
+              onSelect={() => {
+                setSelectedIndex(index);
+              }}
+            ></Answer>
+          </List>
         </Grid>
       ))}
     </Grid>
-    // <Grid xs={6}>A</Grid>
-    // <Grid xs={6}>B</Grid>
-    // <Grid xs={6}>C</Grid>
-    // <Grid xs={6}>D</Grid>
-    // <ul className="list-group">
-    //   {answers.map((answer, index) => (
-    //     <li className={selectedIndex === index ? "list-group-item active" : "list-group-item"} key={index}>
-    //       <Answer
-    //         isCorrect={answer.isCorrect}
-    //         prefix={String.fromCharCode(index + 65)}
-    //         label={answer.answer}
-    //         onSelect={() => {
-    //           setSelectedIndex(index);
-    //         }}
-    //       ></Answer>
-    //     </li>
-    //   ))}
-    // </ul>
   );
 };

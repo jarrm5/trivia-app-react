@@ -1,9 +1,12 @@
 import { AnswerProps } from "../props/Answer.types";
+import { ListItemButton } from "@mui/material";
 
-export const Answer = ({ prefix, label, isCorrect, onSelect }: AnswerProps) => {
+export const Answer = ({ prefix, label, isCorrect, isSelected, onSelect }: AnswerProps) => {
   return (
-    <h5 onClick={onSelect}>
-      {prefix}. {label}
-    </h5>
+    <ListItemButton selected={isSelected}>
+      <h5 onClick={onSelect}>
+        {prefix}. {label}
+      </h5>
+    </ListItemButton>
   );
 };
