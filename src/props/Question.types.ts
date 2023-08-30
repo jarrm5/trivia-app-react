@@ -1,3 +1,3 @@
 export type QuestionProps = {
-    children: string
+    value: string
 }
