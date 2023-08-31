@@ -4,6 +4,7 @@ import { Question } from "./components/Question";
 import { AnswerBank } from "./components/AnswerBank";
 import { useState, useEffect } from "react";
 import { Trivia } from "./props/Trivia.types";
+import { AnswerObj } from "./props/AnswerBank.types";
 
 function App() {
   const [triviaBank, setTriviaBank] = useState<Trivia[]>([]);
@@ -17,7 +18,19 @@ function App() {
   return (
     <div className="App">
       {triviaBank.map((trivia: Trivia) => {
-        return <Question value={trivia.question.text}></Question>;
+        return (
+          <div>
+            <Question value={trivia.question.text}></Question>
+            <AnswerBank
+              answers={[
+                // trivia.incorrectAnswers.map((incorrectAnswer: string) => {
+                //   return { answer: incorrectAnswer, isCorrect: false };
+                // }),
+                { answer: trivia.correctAnswer, isCorrect: true },
+              ]}
+            ></AnswerBank>
+          </div>
+        );
       })}
       {/* <AnswerBank answers={answers}></AnswerBank> */}
       <div className="btn-group btn-group-lg">
