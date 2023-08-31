@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     fetch(
-      "https://the-trivia-api.com/v2/questions?limit=10&categories=science,film_and_tv,music,history,geography,art_and_literature,sport_and_leisure,general_knowledge,science,food_and_drink&difficulties=easy,medium,hard"
+      "https://the-trivia-api.com/v2/questions?limit=15&categories=science,film_and_tv,music,history,geography,art_and_literature,sport_and_leisure,general_knowledge,science,food_and_drink&difficulties=easy,medium,hard"
     ).then((response) => response.json().then((data: Trivia[]) => setTriviaBank(data)));
   }, []);
 
@@ -32,7 +32,6 @@ function App() {
           </div>
         );
       })}
-      {/* <AnswerBank answers={answers}></AnswerBank> */}
       <div className="btn-group btn-group-lg">
         <Button color={"dark"} label="Previous"></Button>
         <Button color={"dark"} label="Next"></Button>

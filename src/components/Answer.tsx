@@ -5,7 +5,7 @@ export const Answer = ({ prefix, label, isCorrect, isSelected, onSelect }: Answe
   return (
     <ListItemButton selected={isSelected}>
       <h5 onClick={onSelect}>
-        {prefix}. {label}
+        {prefix}. {label} - {isCorrect}
       </h5>
     </ListItemButton>
   );

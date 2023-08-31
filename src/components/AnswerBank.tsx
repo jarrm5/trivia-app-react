@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AnswerProps } from "../props/Answer.types";
+import { AnswerObj } from "../props/AnswerBank.types";
 import { Answer } from "./Answer";
 import { AnswerBankProps } from "../props/AnswerBank.types";
 import { Grid } from "@mui/material";
@@ -10,7 +10,7 @@ export const AnswerBank = ({ answers }: AnswerBankProps) => {
 
   return (
     <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 1, md: 1 }}>
-      {answers.map((answer, index) => (
+      {shuffleArray(answers).map((answer, index) => (
         <Grid xs={6}>
           <List>
             <Answer
@@ -29,3 +29,16 @@ export const AnswerBank = ({ answers }: AnswerBankProps) => {
     </Grid>
   );
 };
+
+function shuffleArray(arr: AnswerObj[]) {
+  // Start from the last element and swap
+  // one by one. We don't need to run for
+  // the first element that's why i > 0
+  for (let i = arr.length - 1; i > 0; i--) {
+    // pick a random index from 0 to i inclusive
+    const j = Math.floor(Math.random() * (i + 1)); // at random index
+    // Swap arr[i] with the element
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
