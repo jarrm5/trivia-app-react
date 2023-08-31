@@ -23,9 +23,9 @@ function App() {
             <Question value={trivia.question.text}></Question>
             <AnswerBank
               answers={[
-                // trivia.incorrectAnswers.map((incorrectAnswer: string) => {
-                //   return { answer: incorrectAnswer, isCorrect: false };
-                // }),
+                ...trivia.incorrectAnswers.map((incorrectAnswer: string) => {
+                  return { answer: incorrectAnswer, isCorrect: false };
+                }),
                 { answer: trivia.correctAnswer, isCorrect: true },
               ]}
             ></AnswerBank>
