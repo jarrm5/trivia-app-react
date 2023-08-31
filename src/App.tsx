@@ -3,31 +3,23 @@ import { Button } from "./components/Button";
 import { Question } from "./components/Question";
 import { AnswerBank } from "./components/AnswerBank";
 import { useState, useEffect } from "react";
+import { Trivia } from "./props/Trivia.types";
 
 function App() {
-  const answers = [
-    { answer: "Berlin", isCorrect: false },
-    { answer: "Munich", isCorrect: false },
-    { answer: "Frankfurt", isCorrect: false },
-    { answer: "Nuremberg", isCorrect: true },
-  ];
-
-  const [triviaBank, setTriviaBank] = useState([]);
+  const [triviaBank, setTriviaBank] = useState<Trivia[]>([]);
 
   useEffect(() => {
     fetch(
       "https://the-trivia-api.com/v2/questions?limit=10&categories=science,film_and_tv,music,history,geography,art_and_literature,sport_and_leisure,general_knowledge,science,food_and_drink&difficulties=easy,medium,hard"
-    ).then((response) => response.json().then((data) => setTriviaBank(data)));
+    ).then((response) => response.json().then((data: Trivia[]) => setTriviaBank(data)));
   }, []);
 
   return (
     <div className="App">
-      {triviaBank.map((trivia) => {
-        // return <Question value={trivia.question}></Question>;
-        return null;
+      {triviaBank.map((trivia: Trivia) => {
+        return <Question value={trivia.question.text}></Question>;
       })}
-      {/* <Question>In 1945, which German city hosted the trials where former Nazi leaders were prosecuted for war crimes?</Question> */}
-      <AnswerBank answers={answers}></AnswerBank>
+      {/* <AnswerBank answers={answers}></AnswerBank> */}
       <div className="btn-group btn-group-lg">
         <Button color={"dark"} label="Previous"></Button>
         <Button color={"dark"} label="Next"></Button>
