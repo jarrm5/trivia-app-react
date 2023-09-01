@@ -5,6 +5,8 @@ import { AnswerBank } from "./components/AnswerBank";
 import { useState, useEffect } from "react";
 import { Trivia } from "./props/Trivia.types";
 import { AnswerObj } from "./props/AnswerBank.types";
+import { Grid } from "@mui/material";
+import mainLogo from "../src/main_logo.jpeg";
 
 function App() {
   const [triviaBank, setTriviaBank] = useState<Trivia[]>([]);
@@ -17,6 +19,12 @@ function App() {
 
   return (
     <div className="App">
+      <Grid container>
+        <Grid item xs={12}>
+          <img src={mainLogo} alt="main logo" />
+        </Grid>
+      </Grid>
+      {/* <Grid item xs={10}> */}
       {triviaBank.map((trivia: Trivia) => {
         return (
           <div>
@@ -36,6 +44,8 @@ function App() {
         <Button color={"dark"} label="Previous"></Button>
         <Button color={"dark"} label="Next"></Button>
       </div>
+      {/* </Grid> */}
+      {/* </Grid> */}
     </div>
   );
 }
