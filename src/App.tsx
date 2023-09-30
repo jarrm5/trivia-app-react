@@ -5,8 +5,7 @@ import { AnswerBank } from "./components/AnswerBank";
 import { useState, useEffect } from "react";
 import { Trivia } from "./props/Trivia.types";
 import { AnswerObj } from "./props/AnswerBank.types";
-import { Grid } from "@mui/material";
-import mainLogo from "../src/main_logo.jpeg";
+import Main from "./pages/Main";
 
 function App() {
   const [triviaBank, setTriviaBank] = useState<Trivia[]>([]);
@@ -14,17 +13,14 @@ function App() {
   useEffect(() => {
     fetch(
       "https://the-trivia-api.com/v2/questions?limit=15&categories=science,film_and_tv,music,history,geography,art_and_literature,sport_and_leisure,general_knowledge,science,food_and_drink&difficulties=easy,medium,hard"
-    ).then((response) => response.json().then((data: Trivia[]) => setTriviaBank(data)));
+    )
+      .then((response) => response.json())
+      .then((data: Trivia[]) => setTriviaBank(data));
   }, []);
 
   return (
     <div className="App">
-      <Grid container>
-        <Grid item xs={12}>
-          <img src={mainLogo} alt="main logo" />
-        </Grid>
-      </Grid>
-      {/* <Grid item xs={10}> */}
+      <Main />
       {triviaBank.map((trivia: Trivia) => {
         return (
           <div>

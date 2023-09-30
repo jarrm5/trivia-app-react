@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { Answer } from "./Answer";
 import { AnswerBankProps } from "../props/AnswerBank.types";
-import { Grid } from "@mui/material";
-import { List } from "@mui/material";
+import { Grid, List } from "@mui/material";
 
 export const AnswerBank = ({ answers }: AnswerBankProps) => {
   const [selectedIndex, setSelectedIndex] = useState(-1);
