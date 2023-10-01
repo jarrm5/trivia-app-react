@@ -11,4 +11,4 @@ export type Trivia = {
     difficulty: string;
     regions: string[];
     isNiche: boolean;
-  };
+};

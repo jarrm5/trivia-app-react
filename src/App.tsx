@@ -1,7 +1,4 @@
 import "./App.css";
-import { Button } from "./components/Button";
-import { Question } from "./components/Question";
-import { AnswerBank } from "./components/AnswerBank";
 import { useState, useEffect } from "react";
 import { Trivia } from "./props/Trivia.types";
 import { AnswerObj } from "./props/AnswerBank.types";
@@ -21,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <Main />
-      {triviaBank.map((trivia: Trivia) => {
+      {/* {triviaBank.map((trivia: Trivia) => {
         return (
           <div>
             <Question value={trivia.question.text}></Question>
@@ -39,9 +36,7 @@ function App() {
       <div className="btn-group btn-group-lg">
         <Button color={"dark"} label="Previous"></Button>
         <Button color={"dark"} label="Next"></Button>
-      </div>
-      {/* </Grid> */}
-      {/* </Grid> */}
+      </div> */}
     </div>
   );
 }
