@@ -30,6 +30,12 @@ export const MainForm = (props: MainFormProps) => {
     //if (e.target.checked && categories.indexOf(name) === -1) {
     if (e.target.checked) {
       setCategories([...categories, name]);
+    } else {
+      setCategories(
+        categories.filter((category) => {
+          return category !== name;
+        })
+      );
     }
   }
 
