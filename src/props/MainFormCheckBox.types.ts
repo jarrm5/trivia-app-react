@@ -1,5 +1,6 @@
 export type MainFormCheckbox = {
     name : string,
     label: string,
-    handleChecked: (e : React.ChangeEvent<HTMLInputElement>) => void;
+    //checked : boolean,
+    handleCheckboxChecked: (e : React.ChangeEvent<HTMLInputElement>) => void;
 }

@@ -15,17 +15,19 @@ import { MainFormProps } from "../props/MainForm.types";
 import { MainFormCheckbox } from "../props/MainFormCheckBox.types";
 
 export const MainForm = (props: MainFormProps) => {
+  const radios: string[] = ["Easy", "Medium", "Hard"];
+
   const checkboxes: MainFormCheckbox[] = [
-    { name: "music", label: "Music", handleChecked: handleChecked },
-    { name: "history", label: "History", handleChecked: handleChecked },
-    { name: "geography", label: "Geography", handleChecked: handleChecked },
-    { name: "art_and_literature", label: "Art & Literature", handleChecked: handleChecked },
-    { name: "sport_and_leisure", label: "Sports & Leisure", handleChecked: handleChecked },
-    { name: "general_knowledge", label: "General Knowledge", handleChecked: handleChecked },
-    { name: "food_and_drink", label: "Food & Drink", handleChecked: handleChecked },
+    { name: "music", label: "Music", handleCheckboxChecked: handleCheckboxChecked },
+    { name: "history", label: "History", handleCheckboxChecked: handleCheckboxChecked },
+    { name: "geography", label: "Geography", handleCheckboxChecked: handleCheckboxChecked },
+    { name: "art_and_literature", label: "Art & Literature", handleCheckboxChecked: handleCheckboxChecked },
+    { name: "sport_and_leisure", label: "Sports & Leisure", handleCheckboxChecked: handleCheckboxChecked },
+    { name: "general_knowledge", label: "General Knowledge", handleCheckboxChecked: handleCheckboxChecked },
+    { name: "food_and_drink", label: "Food & Drink", handleCheckboxChecked: handleCheckboxChecked },
   ];
 
-  function handleChecked(e: React.ChangeEvent<HTMLInputElement>) {
+  function handleCheckboxChecked(e: React.ChangeEvent<HTMLInputElement>) {
     let name = e.target.name;
     //if (e.target.checked && categories.indexOf(name) === -1) {
     if (e.target.checked) {
@@ -37,6 +39,10 @@ export const MainForm = (props: MainFormProps) => {
         })
       );
     }
+  }
+
+  function resetForm() {
+    setName("");
   }
 
   const [name, setName] = useState("");
@@ -57,9 +63,19 @@ export const MainForm = (props: MainFormProps) => {
         <FormControl>
           <FormLabel id="difficulty">Difficulty</FormLabel>
           <RadioGroup aria-labelledby="difficulty" defaultValue="easy" name="difficulty-group">
-            <FormControlLabel value="easy" control={<Radio />} onChange={() => setDifficulty("easy")} label="Easy" />
-            <FormControlLabel value="medium" control={<Radio />} onChange={() => setDifficulty("medium")} label="Medium" />
-            <FormControlLabel value="hard" control={<Radio />} onChange={() => setDifficulty("hard")} label="Hard" />
+            {radios.map((radio: string) => {
+              return (
+                <FormControlLabel
+                  key={radio}
+                  value={radio.toLocaleLowerCase()}
+                  control={<Radio />}
+                  onChange={(e) => {
+                    setDifficulty(radio.toLocaleLowerCase());
+                  }}
+                  label={radio}
+                />
+              );
+            })}
           </RadioGroup>
         </FormControl>
       </div>
@@ -68,7 +84,7 @@ export const MainForm = (props: MainFormProps) => {
           <FormLabel component="legend">Select Categories</FormLabel>
           <FormGroup>
             {checkboxes.map((checkbox: MainFormCheckbox) => {
-              const { name, label, handleChecked } = checkbox;
+              const { name, label, handleCheckboxChecked } = checkbox;
               return (
                 <FormControlLabel
                   key={name}
@@ -76,7 +92,7 @@ export const MainForm = (props: MainFormProps) => {
                     <Checkbox
                       onChange={(e) => {
                         {
-                          handleChecked(e);
+                          handleCheckboxChecked(e);
                         }
                       }}
                       name={name}
@@ -90,13 +106,7 @@ export const MainForm = (props: MainFormProps) => {
         </FormControl>
       </div>
       <ButtonGroup variant="contained" aria-label="outlined primary button group">
-        <Button
-          onClick={() => {
-            setName("");
-          }}
-        >
-          Reset
-        </Button>
+        <Button onClick={resetForm}>Reset</Button>
         <Button onClick={() => handleSubmit(name, difficulty, categories)}>Submit</Button>
       </ButtonGroup>
     </form>
