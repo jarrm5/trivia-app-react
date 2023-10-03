@@ -44,3 +44,14 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+##App to do:
+
+1. MainForm.tsx - Reset button unchecks radio's, checkboxes when pressed
+2. MainForm.tsx - Select all/unselect all option for the category checkboxes
+3. Main.tsx - useEffect runs on page load but shouldn't
+4. Two different Game modes:
+   a. User picks 10 easy,med,or hard questions and selects their desired categories
+   b. Who wants to be a millionaire mode: 5 easy, 5 medium, 5 hard trvia questions from all categories.
+   - lifelines: 50/50, audience polling simulation (75% chance the right answer will recieve the most votes)
+5. backend scoring using mongodb and ability to view hiscores (search capability based on name)

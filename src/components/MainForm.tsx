@@ -43,6 +43,8 @@ export const MainForm = (props: MainFormProps) => {
 
   function resetForm() {
     setName("");
+    setDifficulty("easy");
+    setCategories([]);
   }
 
   const [name, setName] = useState("");
@@ -63,16 +65,16 @@ export const MainForm = (props: MainFormProps) => {
         <FormControl>
           <FormLabel id="difficulty">Difficulty</FormLabel>
           <RadioGroup aria-labelledby="difficulty" defaultValue="easy" name="difficulty-group">
-            {radios.map((radio: string) => {
+            {radios.map((radioStr: string) => {
               return (
                 <FormControlLabel
-                  key={radio}
-                  value={radio.toLocaleLowerCase()}
+                  key={radioStr}
+                  value={radioStr.toLocaleLowerCase()}
                   control={<Radio />}
                   onChange={(e) => {
-                    setDifficulty(radio.toLocaleLowerCase());
+                    setDifficulty(radioStr.toLocaleLowerCase());
                   }}
-                  label={radio}
+                  label={radioStr}
                 />
               );
             })}
